@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>简易计算器</title>
+    <style>
+        .calc { width: 320px; margin: 40px auto; border:2px solid #444; padding:15px; background:#f5f5f5; }
+        #screen { width:100%; box-sizing:border-box; height:60px; font-size:28px; text-align:right; margin-bottom:10px; padding:5px; }
+        .row { display:flex; gap:6px; margin:6px 0; }
+        button { flex:1; height:50px; font-size:20px; cursor:pointer; }
+    </style>
+</head>
+<body>
+    <div class="calc">
+        <input id="screen" readonly>
+        <div class="row">
+            <button onclick="addNum('7')">7</button>
+            <button onclick="addNum('8')">8</button>
+            <button onclick="addNum('9')">9</button>
+            <button onclick="addNum('/')">/</button>
+        </div>
+        <div class="row">
+            <button onclick="addNum('4')">4</button>
+            <button onclick="addNum('5')">5</button>
+            <button onclick="addNum('6')">6</button>
+            <button onclick="addNum('*')">×</button>
+        </div>
+        <div class="row">
+            <button onclick="addNum('1')">1</button>
+            <button onclick="addNum('2')">2</button>
+            <button onclick="addNum('3')">3</button>
+            <button onclick="addNum('-')">-</button>
+        </div>
+        <div class="row">
+            <button onclick="addNum('0')">0</button>
+            <button onclick="addNum('.')">.</button>
+            <button onclick="calcRes()">=</button>
+            <button onclick="addNum('+')">+</button>
+        </div>
+        <div class="row">
+            <button style="flex:4" onclick="clearAll()">清空</button>
+        </div>
+    </div>
+    <script>
+        let screen = document.getElementById("screen");
+        function addNum(n){ screen.value += n; }
+        function clearAll(){ screen.value = ""; }
+        function calcRes(){
+            try{
+                let res = eval(screen.value.replace("×","*"));
+                screen.value = res;
+            }catch{
+                screen.value = "错误";
+            }
+        }
+    </script>
+</body>
+</html>
