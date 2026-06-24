@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>随机取色器</title>
+    <style>
+        .container { width: 420px; margin: 50px auto; text-align:center; border:2px solid #333; padding:25px; }
+        #colorBox { width: 200px; height: 200px; margin: 20px auto; border:1px solid #000; }
+        #code { font-size:22px; font-weight:bold; }
+        button { padding:10px 20px; font-size:16px; cursor:pointer; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>随机颜色生成</h1>
+        <div id="colorBox"></div>
+        <div id="code">#000000</div>
+        <button id="btn">换一个颜色</button>
+    </div>
+    <script>
+        let box = document.getElementById("colorBox");
+        let code = document.getElementById("code");
+        document.getElementById("btn").onclick = function(){
+            let r = Math.floor(Math.random()*256);
+            let g = Math.floor(Math.random()*256);
+            let b = Math.floor(Math.random()*256);
+            let hex = "#"+((1<<24)+r*65536+g*256+b).toString(16).slice(1);
+            box.style.background = hex;
+            code.innerText = hex;
+        }
+    </script>
+</body>
+</html>
